@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package com.mycompany.gasparottitari1;
+import java.util.*;
+import java.time.*;
+
 
 /**
  *
@@ -17,11 +20,11 @@ public class Tari
     private String cognome;
     private String indirizzo;//indirizzo cittadino
     private float dimensioneAbitazione;
-    private String dataPagamento;
+    private LocalDate dataPagamento;
     private final int costoFisso=1;
 
     //costruttore
-    public Tari(String codiceId, int annotari, String nome, String cognome, String indirizzo, float dimensioneAbitazione, String dataPagamento)
+    public Tari(String codiceId, int annotari, String nome, String cognome, String indirizzo, float dimensioneAbitazione, LocalDate dataPagamento)
     {
         this.codiceId = codiceId;
         this.annoTari = annotari;
@@ -51,7 +54,7 @@ public class Tari
         cognome =" ";
         indirizzo =" ";
         dimensioneAbitazione =0;
-        dataPagamento =" ";
+        dataPagamento =null;
     }
 
     public String getCodiceId() 
@@ -86,7 +89,7 @@ public class Tari
             
     }
 
-    public String getDataPagamento() 
+    public LocalDate getDataPagamento() 
     {
         return dataPagamento;
     }
@@ -121,7 +124,7 @@ public class Tari
         this.dimensioneAbitazione = dimensioneAbitazione;
     }
 
-    public void setDataPagamento(String dataPagamento) 
+    public void setDataPagamento(LocalDate dataPagamento) 
     {
         this.dataPagamento = dataPagamento;
     }

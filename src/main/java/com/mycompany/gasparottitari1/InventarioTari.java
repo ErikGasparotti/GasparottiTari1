@@ -14,6 +14,7 @@ public class InventarioTari
     //attributi
     private Tari[] elencoTari;
     private static int N_MAX_TARI=100;
+    private int nTariPresenti;
     //costruttore
     
     public InventarioTari ()
@@ -22,14 +23,7 @@ public class InventarioTari
        
      }
     //costruttore di copia
-    public InventarioTari (InventarioTari t)
-    {
-         elencoTari=new Tari[N_MAX_TARI];
-         for(int i=0;i<getNMaxTari();i++)
-         {
-             elencoTari[i]=t.getTari(i);
-         }
-    }
+     
     //metodi
     public static int getNMaxTari()
     {
@@ -47,17 +41,14 @@ public class InventarioTari
         return c;
     }
     
-    public Tari getTari (int posizione)
+    
+    public void aggiungiTari(Tari t,int p)//aggiunge una nuova richiesta di pagamento tari
     {
-        try
+        if(elencoTari[p]==null)
         {
-            return new Tari(elencoTari[posizione]);
+            elencoTari[p]=t;
+            nTariPresenti++;
         }
-       
-        catch(NullPointerException posizioneVuota)
-        {
-            return null;
-        }
-              
     }
+    
 }
