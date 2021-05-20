@@ -22,9 +22,10 @@ public class Tari
     private float dimensioneAbitazione;
     private LocalDate dataPagamento;
     private final int costoFisso=1;
+    private boolean tariPagata;
 
     //costruttore
-    public Tari(String codiceId, int annotari, String nome, String cognome, String indirizzo, float dimensioneAbitazione, LocalDate dataPagamento)
+    public Tari(String codiceId, int annotari, String nome, String cognome, String indirizzo, float dimensioneAbitazione, LocalDate dataPagamento,boolean tariPagata)
     {
         this.codiceId = codiceId;
         this.annoTari = annotari;
@@ -33,6 +34,7 @@ public class Tari
         this.indirizzo = indirizzo;
         this.dimensioneAbitazione = dimensioneAbitazione;
         this.dataPagamento = dataPagamento;
+        this.tariPagata= tariPagata;
     }
     //costruttore di copia
     public Tari(Tari t)
@@ -44,6 +46,7 @@ public class Tari
         this.indirizzo = t.getIndirizzo();
         this.dimensioneAbitazione = t.getDimensioneAbitazione();
         this.dataPagamento = t.getDataPagamento();
+        this.tariPagata= t.getTariPagata();
     }
     //costruttore di default
     public Tari()
@@ -55,6 +58,7 @@ public class Tari
         indirizzo =" ";
         dimensioneAbitazione =0;
         dataPagamento =null;
+        tariPagata=false;
     }
 
     public String getCodiceId() 
@@ -94,6 +98,11 @@ public class Tari
         return dataPagamento;
     }
 
+    public boolean getTariPagata()
+    {
+        return tariPagata;
+    }
+    
     public void setCodiceId(String codiceId) 
     {
         this.codiceId = codiceId;
@@ -128,7 +137,10 @@ public class Tari
     {
         this.dataPagamento = dataPagamento;
     }
-    
+    public void setTariPagata(boolean tariPagata)
+    {
+        this.tariPagata=tariPagata;
+    }
     public String toString()
     {
        String s;

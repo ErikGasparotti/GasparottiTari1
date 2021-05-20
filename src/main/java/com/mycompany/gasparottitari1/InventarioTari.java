@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.gasparottitari1;
+import java.time.*;
 
 /**
  *
@@ -51,4 +52,13 @@ public class InventarioTari
         }
     }
     
+    public  void pagaTari(Tari t,boolean tariPagata)
+    {
+        t.setDataPagamento(LocalDate.now());
+        if(tariPagata==false)
+        {
+            tariPagata=true;
+            t.setTariPagata(tariPagata);
+        }
+    }
 }
