@@ -82,5 +82,3 @@ public class Menu
         return sceltaUtente;
     }
 }
-
-}

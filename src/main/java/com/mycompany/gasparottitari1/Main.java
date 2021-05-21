@@ -5,6 +5,8 @@
  */
 package com.mycompany.gasparottitari1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author egasp
@@ -13,10 +15,28 @@ public class Main
 {
     public static void main(String[] args) 
     {
-        int posizione=0;
-    Tari t1=new Tari("1234567",2020,"franco","gasparotti","Via Castellazzi 10",120,null,false);
-    Tari t2=new Tari("1232567",2021,"federico","rossi","Via Zilio 10",124,null,false);
-    
+        Scanner tastiera=new Scanner(System.in);
+        
+        String[] vociMenu=new String[8];
+        int sceltaUtente=-1;
+        
+      
+        TARI tari;
+        
+        String nomeFileTesto="tari.txt";
+        String nomeFileBinario="tari.bin";
+        
+        Tasse t=new Tasse();
+        
+        vociMenu[0]="Esci";  
+        vociMenu[1]="Aggiungi TARI(richiesta per un cittadino di pagamento)";
+        vociMenu[2]="Elimina TARI";
+        vociMenu[3]="Paga TARI";
+        vociMenu[4]="Vedi TARI non pagate(In ordine alfabetico di cittadino)";
+        vociMenu[5]="Mostra tari di un cittadino";
+        vociMenu[6]="Esporta in formato CSV";
+        vociMenu[7]="Salva";          
+        
     }   
     
 }
