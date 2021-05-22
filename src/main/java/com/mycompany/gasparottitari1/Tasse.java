@@ -90,5 +90,120 @@ public class Tasse implements Serializable
        }
   
    }
-        
+   
+  public String elencoTARIOrdinateCittadino() throws EccezionePosizioneNonValida
+  {
+      TARI[] elencoTari=new TARI[NUMTARI];
+      TARI tari;
+      int c=0;
+      int numtari=0;
+      
+      for(int i=0;i<NUMTARI;i++)
+      {
+              tari=getTARI(i);
+              if (tari!=null && tari.getdataPagamento()==null)
+              {
+                  elencoTari[c]=tari;
+                  c++;
+              }
+      }
+      
+      
+      for(int i=0;i<elencoTari.length;i++)
+          if(elencoTari[i]!=null)
+              numtari++;
+      if(numtari==0)
+      {
+          return "Non ci sono Tari non ancora pagate";  
+      }
+      else
+      {
+          elencoTari=Ordinatore.selectionSortTari(elencoTari);
+      
+          String dati="";
+          for(int i=0;i<elencoTari.length;i++)
+            {
+                dati=dati+elencoTari[i].toString()+"\n";
+            }
+            return dati;  
+      }
+      
+          
+    }
+      
+    //Salva le tari e le posizioni su file CSV
+  public void esportaTARICSV(String percorsoFile) throws IOException, EccezionePosizioneNonValida, FileException
+  {
+      TARI tari;
+      String stringaTari;
+      TextFile f1= new TextFile(percorsoFile, 'W');
+      for (int i=0;i<NUM_TARI_MAX;i++)
+      {
+              tari=getTARI(i);
+              if (tari.getnomeCliente()!=null)
+              {
+                  stringaTari=tari.toCSV();
+                  f1.toFile(stringaTari);
+              }
+          
+      }
+      f1.close(); 
+  }
+   
+   public void salvaTassazione(String nomeFile) throws IOException
+  {   
+      FileOutputStream f1=new FileOutputStream(nomeFile);
+      ObjectOutputStream writer=new ObjectOutputStream(f1);
+      writer.writeObject(this);
+      writer.flush();
+      writer.close();   
+  }
+  
+  public Tasse caricaTassazione(String nomeFile) throws IOException, FileException
+  {
+      Tasse s;
+      FileInputStream f1=new FileInputStream(nomeFile);
+      ObjectInputStream reader=new ObjectInputStream(f1);
+      
+       try 
+       {
+           s=(Tasse)reader.readObject();
+           numTassePresentiTotalmente(s);
+           reader.close();
+           return s;
+       } 
+       catch (ClassNotFoundException ex) 
+       {
+           reader.close();
+           throw new FileException("Errore di lettura");
+       }   
+  }
+
+    private int numTassePresentiTotalmente(Tasse s) 
+    {
+        try
+        {
+            for(int i=0;i<NUM_TARI_MAX;i++)
+            {
+                if(s.getTARI(i).getnomeCliente()!=null)
+                    NUMTARI++;
+            } 
+            
+        }
+        catch (EccezionePosizioneNonValida e1)
+                        {
+                            System.out.println(e1.toString());
+                        }
+        return NUMTARI;
+    }
+    
+      
+          
+    }
+  
+   
+  
+    
+  
 }
+        

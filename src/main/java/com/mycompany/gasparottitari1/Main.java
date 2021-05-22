@@ -5,7 +5,10 @@
  */
 package com.mycompany.gasparottitari1;
 
-import java.util.Scanner;
+import eccezioni.*;
+import java.io.IOException;
+import java.util.*;
+
 
 /**
  *
@@ -36,6 +39,31 @@ public class Main
         vociMenu[5]="Mostra tari di un cittadino";
         vociMenu[6]="Esporta in formato CSV";
         vociMenu[7]="Salva";          
+        
+        
+         try 
+        {
+            t=(Tasse) t.caricaTassazione(nomeFileBinario);
+            System.out.println("Dati caricati correttamente");
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println("Impossibile accedere al file in lettura. I dati non sono stati caricati");
+        } 
+        catch (FileException ex) 
+        {
+            System.out.println(ex.toString());
+        }
+        
+        Menu menu= new Menu(vociMenu);
+        
+        do
+        {
+            
+            
+        }while(sceltaUtente!=0);
+        
+        
         
     }   
     
