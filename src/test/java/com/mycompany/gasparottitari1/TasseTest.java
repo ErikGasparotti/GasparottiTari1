@@ -5,12 +5,10 @@
  */
 package com.mycompany.gasparottitari1;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -18,119 +16,88 @@ import static org.junit.Assert.*;
  */
 public class TasseTest {
     
-    public TasseTest() {
+    public Tasse t;
+    public TARI tari;
+    
+    public TasseTest() 
+    {
+        
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+     @Before
+    public void inizializzazione()
+    {
+        t=new Tasse();
+        tari=new TARI();
+        tari.setAnno(2021);
+        tari.setnomeCliente("Erik");
+        tari.setcognomeCliente("Gasparotti");
+        tari.setIndirizzo("Via Grano 8");
+        tari.setDimensioni(111);
+        tari.setPrezzoTassa(111);
+        tari.setdataPagamento(null);
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getTARI method, of class Tasse.
+   /**
+     * Test of getTari method, of class Tasse.
      */
     @Test
-    public void testGetTARI() throws Exception {
-        System.out.println("getTARI");
-        int tariT = 0;
-        Tasse instance = new Tasse();
-        TARI expResult = null;
-        TARI result = instance.getTARI(tariT);
+    public void testGetTARI() throws Exception 
+    {
+        System.out.println("getTari");
+        int tariT= 0;
+        TARI expResult = tari;
+        t.setTARI(tari);
+        TARI result = t.getTARI(tariT);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setTARI method, of class Tasse.
      */
     @Test
-    public void testSetTARI() throws Exception {
+    public void testSetTARI() throws Exception 
+    {
         System.out.println("setTARI");
-        TARI tariT = null;
-        Tasse instance = new Tasse();
-        instance.setTARI(tariT);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        TARI tarit = tari;
+        t.setTARI(tari);
     }
 
     /**
-     * Test of eliminaTARI method, of class Tasse.
+     * Test of eliminaTARI method, of class TARI.
      */
     @Test
-    public void testEliminaTARI() throws Exception {
+    public void testEliminaTARI() throws Exception 
+    {
         System.out.println("eliminaTARI");
         int tariT = 0;
-        Tasse instance = new Tasse();
-        instance.eliminaTARI(tariT);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        t.setTARI(tari);
+        t.eliminaTARI(tariT);
     }
 
     /**
-     * Test of elencoTARIOrdinateCittadino method, of class Tasse.
+     * Test of elencoTARIOrdinateTarghe method, of class TARI.
      */
     @Test
-    public void testElencoTARIOrdinateCittadino() throws Exception {
+    public void testElencoTARIOrdinateCittadino() throws Exception 
+    {
         System.out.println("elencoTARIOrdinateCittadino");
-        Tasse instance = new Tasse();
-        String expResult = "";
-        String result = instance.elencoTARIOrdinateCittadino();
+        String nomeCittadino = "Erik";
+        t.setTARI(tari);
+String expResult = "Tari [\n" +
+"anno=2021\n" +
+"nomeCliente=Erik\n" +
+"cognomeCliente=Gasparotti\n" +
+"indirizzo=Via Grano 8\n" +
+"dimensioni=111\n" +
+"prezzoTassa=111\n" +
+"dataPagamento=null\n" +
+"]\n" +
+"\n" +
+"" ;
+        String result = t.elencoTARIOrdinateCittadino();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of esportaTARICSV method, of class Tasse.
-     */
-    @Test
-    public void testEsportaTARICSV() throws Exception {
-        System.out.println("esportaTARICSV");
-        String percorsoFile = "";
-        Tasse instance = new Tasse();
-        instance.esportaTARICSV(percorsoFile);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of salvaTassazione method, of class Tasse.
-     */
-    @Test
-    public void testSalvaTassazione() throws Exception {
-        System.out.println("salvaTassazione");
-        String nomeFile = "";
-        Tasse instance = new Tasse();
-        instance.salvaTassazione(nomeFile);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of caricaTassazione method, of class Tasse.
-     */
-    @Test
-    public void testCaricaTassazione() throws Exception {
-        System.out.println("caricaTassazione");
-        String nomeFile = "";
-        Tasse instance = new Tasse();
-        Tasse expResult = null;
-        Tasse result = instance.caricaTassazione(nomeFile);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
+   
 }

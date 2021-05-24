@@ -26,6 +26,9 @@ public class Tasse implements Serializable
     private static final int NUM_TARI_MAX=100;
     private static int NUMTARI;
     
+        /**
+    * Costruttore della classe Tasse. Consente di instanziare un nuovo array di Tari.
+    */
      public Tasse()
    {
        tari=new TARI[NUM_TARI_MAX];
@@ -37,7 +40,12 @@ public class Tasse implements Serializable
        
        NUMTARI=0;
    }
-     
+     //metodo che restituisce una Tari
+     /**
+    * Metodo che restituisce una Tari in base al codice
+    * @param tariT codice Tari
+    * @return a Tari restituita
+    */
    public TARI getTARI(int tariT) throws EccezionePosizioneNonValida
    {
        TARI a;
@@ -53,6 +61,10 @@ public class Tasse implements Serializable
   
    }
 
+   /**
+    *Metodo che permette di inserire una nuova richiesta di pagamento della tassa comunale
+    * @param tariT reference di tipo TARI
+    */
    public void setTARI(TARI tariT) throws EccezionePosizioneNonValida
    {
        try
@@ -68,7 +80,11 @@ public class Tasse implements Serializable
   
    }
    
-  
+  /**
+    *Metodo che consente l'eliminazione di una Tari in base al codice
+    * @param tariT codice della tassa da eliminare
+    */
+   
    public void eliminaTARI(int tariT) throws EccezionePosizioneNonValida
    {
        try
@@ -90,7 +106,12 @@ public class Tasse implements Serializable
        }
   
    }
-   
+   //metodo che permette di visulizzare la tari non pagate di un cittadino in ordine alfabetico
+    
+  /**
+    *Metodo che permette di visualizzare la tari non pagate di un cittadino in ordine alfabetico
+    * @return dati Stringa che mostra l'elenco dell tari non pagate del cittadino in ordine alfabetico
+    */
   public String elencoTARIOrdinateCittadino() throws EccezionePosizioneNonValida
   {
       TARI[] elencoTari=new TARI[NUMTARI];
@@ -131,12 +152,12 @@ public class Tasse implements Serializable
           
     }
       
-    //Salva le tari e le posizioni su file CSV
-  public void esportaTARICSV(String percorsoFile) throws IOException, EccezionePosizioneNonValida, FileException
+   
+  public void esportaTARICSV(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileException
   {
       TARI tari;
       String stringaTari;
-      TextFile f1= new TextFile(percorsoFile, 'W');
+      TextFile f1= new TextFile(nomeFile, 'W');
       for (int i=0;i<NUM_TARI_MAX;i++)
       {
               tari=getTARI(i);
@@ -178,7 +199,7 @@ public class Tasse implements Serializable
            throw new FileException("Errore di lettura");
        }   
   }
-
+// metodo che restituisce il numero totale di Tari presenti
     private int numTassePresentiTotalmente(Tasse s) 
     {
         try
