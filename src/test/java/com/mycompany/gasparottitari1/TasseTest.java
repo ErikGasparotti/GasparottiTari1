@@ -76,7 +76,7 @@ public class TasseTest {
     }
 
     /**
-     * Test of elencoTARIOrdinateTarghe method, of class TARI.
+     * Test of elencoTARIOrdinateCittadino method, of class TARI.
      */
     @Test
     public void testElencoTARIOrdinateCittadino() throws Exception 
@@ -84,17 +84,7 @@ public class TasseTest {
         System.out.println("elencoTARIOrdinateCittadino");
         String nomeCittadino = "Erik";
         t.setTARI(tari);
-String expResult = "Tari [\n" +
-"anno=2021\n" +
-"nomeCliente=Erik\n" +
-"cognomeCliente=Gasparotti\n" +
-"indirizzo=Via Grano 8\n" +
-"dimensioni=111\n" +
-"prezzoTassa=111\n" +
-"dataPagamento=null\n" +
-"]\n" +
-"\n" +
-"" ;
+        String expResult ="2021"+"Erik"+"Gasparotti"+"Via Grano 8"+"111"+"111"+"null";
         String result = t.elencoTARIOrdinateCittadino();
         assertEquals(expResult, result);
     }

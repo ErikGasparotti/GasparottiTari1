@@ -16,8 +16,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- *
+ * La classe rappresenta un'array di oggetti di classe TARI.
+ * I suoi suoi attributi sono:<br>
+ * tari<br>
+ * NUM_TARI_MAX<br>
+ * NUMTARI<br>
  * @author egasp
+ * @version 1.0
  */
 public class Tasse implements Serializable
 {
@@ -27,7 +32,8 @@ public class Tasse implements Serializable
     private static int NUMTARI;
     
         /**
-    * Costruttore della classe Tasse. Consente di instanziare un nuovo array di Tari.
+    * Costruttore della classe Tasse.<br>
+    * Consente di instanziare un nuovo array di Tari.
     */
      public Tasse()
    {
@@ -40,11 +46,11 @@ public class Tasse implements Serializable
        
        NUMTARI=0;
    }
-     //metodo che restituisce una Tari
      /**
-    * Metodo che restituisce una Tari in base al codice
-    * @param tariT codice Tari
-    * @return a Tari restituita
+    * Metodo che restituisce una Tari in base al codice(posizione)<br>
+    * @param tariT codice Tari<br>
+    * @return a, Tari restituita<br>
+    * @throws EccezionePosizioneNonValida viene lanciata quando si tenta di assegnare al reference a il valore dell'array in posizione tariT
     */
    public TARI getTARI(int tariT) throws EccezionePosizioneNonValida
    {
@@ -62,8 +68,9 @@ public class Tasse implements Serializable
    }
 
    /**
-    *Metodo che permette di inserire una nuova richiesta di pagamento della tassa comunale
-    * @param tariT reference di tipo TARI
+    *Metodo che permette di inserire una nuova richiesta di pagamento della tassa comunale<br>
+    *@param tariT reference di tipo TARI<br>
+    *@throws EccezionePosizioneNonValida viene lanciata quando si tenta di assegnare all'array in posizione tariT il valore dell'oggetto passato come parametro
     */
    public void setTARI(TARI tariT) throws EccezionePosizioneNonValida
    {
@@ -81,8 +88,10 @@ public class Tasse implements Serializable
    }
    
   /**
-    *Metodo che consente l'eliminazione di una Tari in base al codice
-    * @param tariT codice della tassa da eliminare
+    *Metodo che consente l'eliminazione di una Tari in base al codice<br>
+    *@param tariT codice della tassa da eliminare<br>
+    *@throws EccezionePosizioneNonValida viene lanciata quando si tenta di eliminare una TARI in una data posizione(codice)
+    * 
     */
    
    public void eliminaTARI(int tariT) throws EccezionePosizioneNonValida
@@ -109,9 +118,11 @@ public class Tasse implements Serializable
    //metodo che permette di visulizzare la tari non pagate di un cittadino in ordine alfabetico
     
   /**
-    *Metodo che permette di visualizzare la tari non pagate di un cittadino in ordine alfabetico
-    * @return dati Stringa che mostra l'elenco dell tari non pagate del cittadino in ordine alfabetico
+    *Metodo che permette di visualizzare la tari non pagate di un cittadino in ordine alfabetico<br>
+    *@return dati Stringa che contiene le tari non pagate dal cittadino ordinate in ordine alfabetico<br>
+    *@throws EccezionePosizioneNonValida viene lanciata quando si cerca di assegnare al reference tari un oggetto TARI in posizione i
     */
+   
   public String elencoTARIOrdinateCittadino() throws EccezionePosizioneNonValida
   {
       TARI[] elencoTari=new TARI[NUMTARI];
@@ -199,7 +210,11 @@ public class Tasse implements Serializable
            throw new FileException("Errore di lettura");
        }   
   }
-// metodo che restituisce il numero totale di Tari presenti
+
+  /**
+    *Metodo che restituisce il numero totale di Tari presenti
+    *@return NUMTARI, intero che conta il numero di tari presenti
+    */
     private int numTassePresentiTotalmente(Tasse s) 
     {
         try
