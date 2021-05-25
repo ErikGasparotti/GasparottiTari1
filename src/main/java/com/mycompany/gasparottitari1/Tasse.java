@@ -163,7 +163,13 @@ public class Tasse implements Serializable
           
     }
       
-   
+   /**
+    * Salva una TARI su file CSV
+    * @param nomeFile nome del file CSV sul quale viene esportato l'oggetto di classe TARI
+    * @throws IOException viene sollevata quando tento di istanziare un oggetto di classe TextFile
+    * @throws EccezionePosizioneNonValida viene sollevata quando
+    * @throws FileException viene sollevata quando si tenta di scrivere la stringa sul file
+    */
   public void esportaTARICSV(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileException
   {
       TARI tari;
@@ -181,7 +187,11 @@ public class Tasse implements Serializable
       }
       f1.close(); 
   }
-   
+   /**
+    * Metodo che consente il salvataggio della tassazione sul file
+    * @param nomeFile nome del file su cui viene salvata la tassa
+    * @throws IOException viene sollevata quando si cerca di istanziare un oggetto di classe FileOutputStream
+    */
    public void salvaTassazione(String nomeFile) throws IOException
   {   
       FileOutputStream f1=new FileOutputStream(nomeFile);
@@ -190,7 +200,12 @@ public class Tasse implements Serializable
       writer.flush();
       writer.close();   
   }
-  
+  /**
+    * Metodo che permette di carica la tassazione sul file
+    * @param nomeFile nome del file sul quale viene caricata la tassazione
+    * @throws IOException viene sollevata quando si tenta di istanziare un oggetto di classe FileinputStream
+    * @throws FileExcpetion viene sollevata quando si tenta di leggere sul file
+    */
   public Tasse caricaTassazione(String nomeFile) throws IOException, FileException
   {
       Tasse s;
@@ -213,7 +228,8 @@ public class Tasse implements Serializable
 
   /**
     *Metodo che restituisce il numero totale di Tari presenti
-    *@return NUMTARI, intero che conta il numero di tari presenti
+    *@param s reference di classe Tasse
+    *@return NUMTARI, intero che conta il numero di tari presenti a livello totale
     */
     private int numTassePresentiTotalmente(Tasse s) 
     {

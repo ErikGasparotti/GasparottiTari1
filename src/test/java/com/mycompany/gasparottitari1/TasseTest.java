@@ -14,7 +14,8 @@ import org.junit.Test;
  *
  * @author egasp
  */
-public class TasseTest {
+public class TasseTest 
+{
     
     public Tasse t;
     public TARI tari;
@@ -82,7 +83,6 @@ public class TasseTest {
     public void testElencoTARIOrdinateCittadino() throws Exception 
     {
         System.out.println("elencoTARIOrdinateCittadino");
-        String nomeCittadino = "Erik";
         t.setTARI(tari);
         String expResult ="2021"+"Erik"+"Gasparotti"+"Via Grano 8"+"111"+"111"+"null";
         String result = t.elencoTARIOrdinateCittadino();
